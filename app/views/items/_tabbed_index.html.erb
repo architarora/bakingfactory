@@ -1,0 +1,20 @@
+<div id="tabbed">
+  <tabs>
+
+    <tab name="Bread" v-bind:selected="true">
+      <%= render :partial => "items_list", locals: {items: @breads, state: 'active'} %>
+    </tab>
+
+    <tab name="Pastries">
+      <%= render :partial => "items_list", locals: {pets: @muffins, state: 'active'} %>
+    </tab>
+
+    <tab name="Muffins">
+      <%= render :partial => "items_list", locals: {pets: @pastries, state: 'active'} %>
+    </tab>
+
+  </tabs>
+</div>
+
+<p>&nbsp;</p>
+<%= render :partial => "partials/add_new_object", locals: {model_name: 'item'} %>

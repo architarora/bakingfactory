@@ -11,6 +11,7 @@
     @pastries = Item.active.for_category('pastries').alphabetical.paginate(:page => params[:page]).per_page(10)
     # get a list of any inactive items for sidebar
     @inactive_items = Item.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @active_items = Item.active.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
 
   def show
