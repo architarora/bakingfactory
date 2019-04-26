@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20190107145242) do
     t.string "category"
     t.integer "units_per_item"
     t.float "weight"
+    t.string "picture_url"
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

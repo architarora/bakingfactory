@@ -1,6 +1,6 @@
-<% unless @previous_orders.empty? %>
+<% unless @previous_prices.empty? %>
   <div class="panel clearfix">
-    <h3>Order History</h3>
+    <h3>Price History</h3>
     <table>
       <thead>
         <tr>
@@ -9,10 +9,10 @@
         </tr>
       </thead>
       <tbody>
-      <% @previous_orders.each do |order| %>
+      <% @previous_prices.each do |pricev| %>
         <tr>
-          <td><%= link_to order.date.strftime('%m/%d/%y'), order_path(order) %></td>
-          <td><%= number_to_currency order.grand_total %></td>
+          <td><%= pricev.start_date %></td>
+          <td><%= pricev.price %></td>
         </tr>
       <% end %>
     </table>
