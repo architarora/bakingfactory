@@ -1,4 +1,4 @@
-<h4><%= state.capitalize %> Items at the Baking Factory </h4>
+<%= render :partial => "partials/title_with_search", locals: {title: "Items"} %>
 
 <% if items.empty? %>
   <p>There are no <%= state.downcase %> items at this time.</p>
