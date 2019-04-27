@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :orders
   resources :items
+  resources :carts
 
   # Semi-static page routes
   resources :sessions
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'login', to: 'sessions#new', as: :login
   get 'logout', to: 'sessions#destroy', as: :logout
+
+  get 'add_to_cart/:id(.:format)', to: 'carts#add_to_cart', as: :add_to_cart
   
   # Set the root url
   root :to => 'home#home'

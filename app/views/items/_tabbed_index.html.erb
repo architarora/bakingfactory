@@ -7,13 +7,13 @@
       </ul>
     </div>
     <div id="test1" class="col s12">
-    <%= render :partial => "items_list", locals: {items: @breads, state: 'active'} %>
+    <%= render :partial => "partials/item_list", locals: {items: @breads, state: 'active', item_type: 'Bread'} %>
 	</div>
     <div id="test2" class="col s12">
-    <%= render :partial => "items_list", locals: {items: @muffins, state: 'active'} %>
+    <%= render :partial => "partials/item_list", locals: {items: @muffins, state: 'active', item_type: 'Muffin'} %>
 	</div>
 	<div id="test3" class="col s12">
-    <%= render :partial => "items_list", locals: {items: @pastries, state: 'active'} %>
+    <%= render :partial => "partials/item_list", locals: {items: @pastries, state: 'active', item_type: 'Pastry'} %>
 	</div>
   </div>
 

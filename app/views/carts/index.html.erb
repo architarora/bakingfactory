@@ -1,0 +1,23 @@
+<% if @cart_items.empty? %>
+  <h4>No cart items this time.</h4>
+<% else %>
+  <h4> Cart </h4>
+  <table class="table table-striped">
+    <!-- <thead>
+      <tr>
+        <th width="225">Name</th>
+        <th width="125">Phone</th>
+        <th width="200">Email</th>
+      </tr>
+    </thead> -->
+    <tbody>
+      <% @cart_items.each do |oi| %>
+        <tr>
+         <td><%= oi.item.name %></td>
+          <td><%= oi.item.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<p>&nbsp;</p>
