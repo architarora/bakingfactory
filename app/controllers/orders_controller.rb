@@ -4,7 +4,11 @@ class OrdersController < ApplicationController
   authorize_resource
   
   def index
-    @all_orders = Order.chronological.paginate(:page => params[:page]).per_page(10)
+    if current_user.role?(:customer)
+      @all_orders = current_user.customer.orders.chronological.paginate(:page => params[:page]).per_page(10)
+    else
+      @all_orders = Order.chronological.paginate(:page => params[:page]).per_page(10)
+    end
   end
 
   def show
