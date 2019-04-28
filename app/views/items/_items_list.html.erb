@@ -16,8 +16,8 @@
     <% for item in items %>
       <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
         <td><%= link_to item.name, item_path(item) %></td>
-        <td><%= item.units_per_item %></td>
-        <td><%= item.current_price %></td>
+        <td><%= item.units_per_item %> <%= item_type == 'bread' ? 'loaf' : item_type %></td>
+        <td><%= number_to_currency item.current_price %></td>
 
       <td class="align_center">
         <% if can? :edit, item %>
@@ -25,6 +25,10 @@
                 <i class="material-icons">edit</i>
             <% end %>
             &nbsp;&nbsp;&nbsp;&nbsp; 
+          <% else %>
+           <%= link_to(add_to_cart_path(item.id), class: 'button tiny radius', method: "get") do %>
+                &nbsp;Add to Cart&nbsp;
+          <% end %>
           <% end %>
           <% if can? :destroy, item %>
             <%= link_to(item_path(item), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }) do %>

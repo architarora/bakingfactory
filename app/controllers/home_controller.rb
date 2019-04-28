@@ -29,7 +29,7 @@ class HomeController < ApplicationController
 
   def cust_dashboard
   	@orders_cust = current_user.customer.orders
-  	@previous_items = @orders_cust.
+  	# @previous_items = @orders_cust.
   end
 
 end
