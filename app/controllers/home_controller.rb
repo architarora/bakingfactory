@@ -20,4 +20,16 @@ class HomeController < ApplicationController
     @total_hits = @customers.size + @items.size
   end
 
+  def admin_dashboard
+  	@all_orders = Order.all
+  	@all_items = Item.all
+  	@all_customers = Customer.all
+  	@all_oi = OrderItem.all
+  end
+
+  def cust_dashboard
+  	@orders_cust = current_user.customer.orders
+  	@previous_items = @orders_cust.
+  end
+
 end

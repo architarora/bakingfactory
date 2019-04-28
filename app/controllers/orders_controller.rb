@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   
   def index
     if current_user.role?(:customer)
-      @all_orders = current_user.customer.orders.chronological.paginate(:page => params[:page]).per_page(10)
+    @all_orders = current_user.customer.orders.chronological.paginate(:page => params[:page]).per_page(10)
     else
       @all_orders = Order.chronological.paginate(:page => params[:page]).per_page(10)
     end

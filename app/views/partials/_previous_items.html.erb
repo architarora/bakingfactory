@@ -1,0 +1,20 @@
+<% unless @previous_items.empty? %>
+  <div class="panel clearfix">
+    <h3>Previous Items</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="120">Name</th>
+          <th width="100">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @previous_items.each do |pi| %>
+        <tr>
+          <td><%= link_to pi.item.name, item_path(pi.item) %></td>
+          <td><%= number_to_currency pi.item.current_price %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
