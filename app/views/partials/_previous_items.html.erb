@@ -11,8 +11,8 @@
       <tbody>
       <% @previous_items.each do |pi| %>
         <tr>
-          <td><%= link_to pi.item.name, item_path(pi.item) %></td>
-          <td><%= number_to_currency pi.item.current_price %></td>
+          <td><%= link_to pi.first.name, item_path(pi) %></td>
+          <td><%= number_to_currency pi.first.current_price %></td>
         </tr>
       <% end %>
     </table>

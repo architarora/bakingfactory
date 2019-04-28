@@ -1,10 +1,9 @@
 <div class="row">
-  <div class="small-7 columns">
+  <div class="col s8">
     <%= render partial: "partials/previous_items", locals: {previous_items: @previous_items}  unless @previous_items.empty?%>
   </div>
-  <div class="small-5 columns">
+  <div class="col s4">
     <%= render partial: "partials/previous_orders", locals: {previous_orders: @previous_orders}  unless @previous_orders.empty?%>
   </div>
 </div>
 
-<%= render partial: "partials/object_options", locals: {model_name: "order", object: @order}  %>

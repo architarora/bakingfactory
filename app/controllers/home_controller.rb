@@ -28,8 +28,9 @@ class HomeController < ApplicationController
   end
 
   def cust_dashboard
-  	@orders_cust = current_user.customer.orders
-  	# @previous_items = @orders_cust.
+  	@previous_orders = current_user.customer.orders
+  	@previous_items = current_user.customer.orders.map {|a| a.order_items.map {|l| l.item}}.last(10)
+  	puts @previous_items
   end
 
 end

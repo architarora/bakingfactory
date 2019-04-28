@@ -1,0 +1,4 @@
+<head>
+<%= javascript_include_tag 'application' %>
+<%= pie_chart @all_items.group(:category).count %>
+</head>
