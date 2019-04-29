@@ -24,7 +24,7 @@ class Order < ApplicationRecord
   # Class methods
   def self.not_shipped
     # joins(:order_items).where("order_items.shipped_on IS NULL").to_a.uniq
-    joins(:order_items).where("order_items.shipped_on IS NULL").distinct
+    joins(:order_items).where("order_items.shipped_on IS NOT NULL").distinct
 
   end
 
