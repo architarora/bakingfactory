@@ -12,7 +12,9 @@
   <b>Units Per Item</b>: <%= @item.units_per_item %>
 </p>
 
+<% if !can? :edit, @item %>
 <%= link_to(add_to_cart_path(@item.id), class: 'button tiny radius', method: "get") do %>
                 &nbsp;Add to Cart&nbsp;
  <% end %>
+  <% end %>
 

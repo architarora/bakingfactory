@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'home/admin_dashboard', to: 'home#admin_dashboard', as: :admin_dashboard
   get 'home/cust_dashboard', to: 'home#cust_dashboard', as: :customers_dashboard
 
-  post 'customers/user_signup', to: 'customers#new', as: :user_signup
+  post 'customers/new', to: 'customers#new', as: :user_signup
 
   get 'baking_list', to: 'sessions#baking_list', as: :baking_list
 
