@@ -5,8 +5,9 @@ class CartsController < ApplicationController
   # authorize_resource
 
   def index
-    puts get_list_of_items_in_cart.map{|a| a.item}
-    @cart_items = get_list_of_items_in_cart
+    puts get_list_of_items_in_cart.map{|a| a.item_id}
+    @cart_items = get_list_of_items_in_cart.to_a
+    @cart_items_names = get_list_of_items_in_cart.map{|a| Item.find(a.item_id)}
     # puts @cart_items
     # @cart_cost = calculate_cart_items_cost
   end

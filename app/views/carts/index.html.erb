@@ -11,9 +11,10 @@
       </tr>
     </thead> -->
     <tbody>
-      <% @cart_items.each do |orderI| %>
+      <% @cart_items_names.each do |orderI| %>
         <tr>
-          <td><%= orderI.item %></td>
+          <td><%= orderI.name %></td>
+          <td><%= orderI %></td>
         </tr>
       <% end %>
     </tbody>
