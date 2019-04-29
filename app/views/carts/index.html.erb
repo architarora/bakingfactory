@@ -11,13 +11,21 @@
       </tr>
     </thead> -->
     <tbody>
-      <% @cart_items_names.each do |orderI| %>
+      <% @cart_items.each do |orderI| %>
         <tr>
-          <td><%= orderI.name %></td>
+          <td><%= orderI.item_id %></td>
           <td><%= orderI %></td>
+          <td><%= link_to(remove_item_path(orderI.item_id), class: 'button tiny radius', method: "patch") do %>
+                &nbsp;Remove Item&nbsp;
+                <% end %> 
+            </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+  <%= link_to(clear_all_cart_path, class: 'button tiny radius', method: "get") do %>
+                &nbsp;Clear Cart&nbsp;
+              <% end %>
 <% end %>
 <p>&nbsp;</p>

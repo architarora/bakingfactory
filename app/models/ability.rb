@@ -78,6 +78,7 @@ class Ability
       can :index, Item
 
       can :create, Customer
+      can :new, Customer
     end
   end
 end
