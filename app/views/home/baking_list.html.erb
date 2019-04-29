@@ -1,0 +1,23 @@
+<% if @unshipped_orders.empty? %>
+<p> Empty </p>
+<%else %>
+  <div class="panel clearfix">
+    <h3>Baking List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th width="120">Name</th>
+          <th width="100">Units Per Item</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @unshipped_orders.each do |order| %>
+        <tr>
+          <td><%=order.item.name%></td>
+          <td><%=order.item.units_per_item%></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
+

@@ -61,6 +61,7 @@ class Ability
       can :index, Item
 
       can :index, Order
+      can :baking_list, Order
 
     elsif user.role? :shipper
 

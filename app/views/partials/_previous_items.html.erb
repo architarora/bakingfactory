@@ -1,20 +1,43 @@
-<% unless @previous_items.empty? %>
-  <div class="panel clearfix">
-    <h3>Previous Items</h3>
-    <table>
-      <thead>
-        <tr>
-          <th width="120">Name</th>
-          <th width="100">Price</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @previous_items.each do |pi| %>
-        <tr>
-          <td><%= link_to pi.first.name, item_path(pi) %></td>
-          <td><%= number_to_currency pi.first.current_price %></td>
-        </tr>
+<% if @previous_items.empty? %>
+  <p>There are no previous items at ordered.</p>
+<% else %>
+<h3> Previous Items </h3>
+
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Units Per Item</th>
+      <th>Price</th>
+      <% if can? :edit, @previous_items %>
+      <th class="align_center">Options</th>
       <% end %>
-    </table>
-  </div>
+    </thead>
+    <% for item in @previous_items %>
+      <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+        <td><%= link_to item.first.name, item_path(item.first.id) %></td>
+        <td><%= item.first.units_per_item %></td>
+        <td><%= number_to_currency item.first.current_price %></td>
+
+      <td class="align_center">
+        <% if can? :edit, item %>
+          <%= link_to edit_item_path(item) do %>
+                <i class="material-icons">edit</i>
+            <% end %>
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+          <% else %>
+           <%= link_to(add_to_cart_path(item.first.id), class: 'button tiny radius', method: "get") do %>
+                &nbsp;Add to Cart&nbsp;
+          <% end %>
+          <% end %>
+          <% if can? :destroy, item %>
+            <%= link_to(item_path(item), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }) do %>
+                <i class="material-icons">delete</i>
+            <% end %>
+          <% end %>
+      </td>
+      </tr>
+    <% end %>
+  </table>
+  <p class="supertiny"></p>
+  <br />
 <% end %>

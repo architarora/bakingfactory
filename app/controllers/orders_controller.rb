@@ -29,8 +29,11 @@ class OrdersController < ApplicationController
       render action: 'new'
     end
   end
-  
 
+  def baking_list
+    @unshipped_orders = OrderItems.unshipped
+  end
+  
   private
   def set_order
     @order = Order.find(params[:id])
