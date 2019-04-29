@@ -1,7 +1,7 @@
 <h3><%= @item.name %></h3>
 
 <p>
-  <b>Price</b>: <%= @item.current_price %>
+  <b>Price</b>: <%= number_to_currency @item.current_price %>
 </p>
 
 <p>
@@ -11,4 +11,8 @@
 <p>
   <b>Units Per Item</b>: <%= @item.units_per_item %>
 </p>
+
+<%= link_to(add_to_cart_path(@item.id), class: 'button tiny radius', method: "get") do %>
+                &nbsp;Add to Cart&nbsp;
+ <% end %>
 

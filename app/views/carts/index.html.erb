@@ -11,10 +11,9 @@
       </tr>
     </thead> -->
     <tbody>
-      <% @cart_items.each do |oi| %>
+      <% @cart_items.each do |orderI| %>
         <tr>
-         <td><%= oi.item.name %></td>
-          <td><%= oi.item.name %></td>
+          <td><%= orderI.item %></td>
         </tr>
       <% end %>
     </tbody>

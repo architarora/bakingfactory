@@ -1,0 +1,70 @@
+<h3> Baking List </h3>
+<% if @unshipped_orders_bread.empty? %>
+<p> No Bread items to be baked. </p>
+<%else %>
+  <div class="panel clearfix">
+    <h4>Bread</h4>
+    <table>
+      <thead>
+        <tr>
+          <th width="120">Name</th>
+          <th width="100">Units Needed</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @unshipped_orders_bread.each do |order| %>
+        <tr>
+          <td><%=order[0]%></td>
+          <td><%=order[1]%></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
+
+<% if @unshipped_orders_pastry.empty? %>
+<p> No Pastry items to be baked. </p>
+<%else %>
+  <div class="panel clearfix">
+    <h4>Pastry</h4>
+    <table>
+      <thead>
+        <tr>
+          <th width="120">Name</th>
+          <th width="100">Units Needed</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @unshipped_orders_pastry.each do |order| %>
+        <tr>
+          <td><%=order[0]%></td>
+          <td><%=order[1]%></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
+
+<% if @unshipped_orders_muffin.empty? %>
+<p> No Muffin items to be baked. </p>
+<%else %>
+  <div class="panel clearfix">
+    <h4>Muffin</h4>
+    <table>
+      <thead>
+        <tr>
+          <th width="120">Name</th>
+          <th width="100">Units Needed</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @unshipped_orders_muffin.each do |order| %>
+        <tr>
+          <td><%=order[0]%></td>
+          <td><%=order[1]%></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
+

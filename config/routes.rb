@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   
   # Routes for main resources
   resources :addresses
-  resources :customers
   resources :orders
   resources :items
   resources :carts
+  resources :customers
 
   # Semi-static page routes
   resources :sessions
@@ -17,12 +17,14 @@ Rails.application.routes.draw do
   get 'home/admin_dashboard', to: 'home#admin_dashboard', as: :admin_dashboard
   get 'home/cust_dashboard', to: 'home#cust_dashboard', as: :customers_dashboard
 
-  get 'home/baking_list', to: 'home#baking_list', as: :baking_list
+  post 'user_signup', to: 'customers#new', as: :user_signup
+
+  get 'baking_list', to: 'sessions#baking_list', as: :baking_list
 
   get 'login', to: 'sessions#new', as: :login
   get 'logout', to: 'sessions#destroy', as: :logout
 
-  get 'add_to_cart/:id(.:format)', to: 'carts#add_to_cart', as: :add_to_cart
+  get 'add_to_cart/:id', to: 'carts#add_to_cart', as: :add_to_cart
 
   # Set the root url
   root :to => 'home#home'

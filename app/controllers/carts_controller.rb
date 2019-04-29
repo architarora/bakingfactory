@@ -5,7 +5,9 @@ class CartsController < ApplicationController
   # authorize_resource
 
   def index
+    puts get_list_of_items_in_cart.map{|a| a.item}
     @cart_items = get_list_of_items_in_cart
+    # puts @cart_items
     # @cart_cost = calculate_cart_items_cost
   end
 
@@ -13,7 +15,8 @@ class CartsController < ApplicationController
   end
 
   def add_to_cart
-    add_item_to_cart(Item.find(params[:id]))
+    add_item_to_cart(Item.find(params[:id]).id)
+    redirect_to items_path, notice: "Item added to cart!"
   end
 
 end

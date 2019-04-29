@@ -12,7 +12,7 @@
       <% @similar_items.each do |pricev| %>
         <tr>
           <td><%= link_to pricev.name, item_path(pricev) %></td>
-          <td><%= pricev.current_price %></td>
+          <td><%= number_to_currency pricev.current_price %></td>
         </tr>
       <% end %>
     </table>
