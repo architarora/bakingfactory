@@ -14,7 +14,7 @@
       <% @cart_items.each do |orderI| %>
         <tr>
           <td><%= orderI.item_id %></td>
-          <td><%= orderI %></td>
+          <td><%= orderI.quantity %></td>
           <td><%= link_to(remove_item_path(orderI.item_id), class: 'button tiny radius', method: "patch") do %>
                 &nbsp;Remove Item&nbsp;
                 <% end %> 

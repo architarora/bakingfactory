@@ -42,5 +42,20 @@ class SessionsController < ApplicationController
   end
 
   def shipping_list
+    @unshipped_items = OrderItem.all.unshipped
+    @shipped_items = OrderItem.all.shipped
   end
+
+  def mark_shipped
+    @current_oi = OrderItem.find(params[:id])
+    @current_oi.update(shipped_on,Date.today)
+    redirect_to shipping_list_path, notice: "Marked as shipped!"
+  end
+
+  def mark_unshipped
+    @current_oi = OrderItem.find(params[:id])
+    @current_oi.update(@current_oi.shipped_on,nil)
+    redirect_to shipping_list_path, notice: "Marked as unshipped!"
+  end
+
 end

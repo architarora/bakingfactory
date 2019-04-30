@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   get 'clear_all_cart', to: 'carts#clear_all_cart', as: :clear_all_cart
   patch 'remove_item/:id', to: 'carts#remove_item', as: :remove_item
 
+  patch 'mark_unshipped/:id', to: 'order_items#mark_unshipped', as: :mark_unshipped
+  patch 'mark_shipped/:id', to: 'order_items#mark_shipped', as: :mark_shipped
+
   # Set the root url
   root :to => 'home#home'
   
