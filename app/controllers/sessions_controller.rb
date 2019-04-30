@@ -42,8 +42,9 @@ class SessionsController < ApplicationController
   end
 
   def shipping_list
-    @unshipped_items = OrderItem.all.unshipped
-    @shipped_items = OrderItem.all.shipped
+    @unshipped_items = OrderItem.all.unshipped.paginate(:page => params[:page]).per_page(10)
+    @shipped_items = OrderItem.all.shipped.order(shipped_on: :desc).paginate(:page => params[:page]).per_page(10)
+    @shipped_items_c = Order.all.map {|a| a.unshipped_items}
   end
 
   def mark_shipped

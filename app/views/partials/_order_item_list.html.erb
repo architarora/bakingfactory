@@ -12,6 +12,9 @@
         <th width="100">City</th>
         <th width="100">State</th>
         <th width="100">Zip</th>
+        <% if type_name == "s" %>
+        <th width="100">Shipped On</th>
+        <%end %>
         <th width="100">Shipped?</th>
         <% if controller.controller_name == 'home' %>
           <th>&nbsp;</th>
@@ -29,6 +32,10 @@
           <td><%= oi.order.address.state%></td>
           <td><%= oi.order.address.zip%></td>
 
+          <% if !oi.shipped_on.nil? %>
+          <td><%=oi.shipped_on%></td>
+          <%end %>
+
             <td>
               <% if oi.shipped_on.nil? %>
                 <%= link_to(image_tag('red_check.png', :size => "30x30"), mark_shipped_path(oi.id), method: 'patch') %>
@@ -40,4 +47,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate order_items, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
 <%end %>

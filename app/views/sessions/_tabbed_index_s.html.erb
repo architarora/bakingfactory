@@ -6,10 +6,10 @@
       </ul>
     </div>
     <div id="test1" class="col s12">
-    <%= render :partial => "partials/order_item_list", locals: {order_items: @unshipped_items} %>
+    <%= render :partial => "partials/order_item_list", locals: {order_items: @unshipped_items, type_name: "us"} %>
 	</div>
     <div id="test2" class="col s12">
-    <%= render :partial => "partials/order_item_list", locals: {order_items: @shipped_items} %>
+    <%= render :partial => "partials/order_item_list", locals: {order_items: @shipped_items, type_name: "s"} %>
 	</div>
   </div>
 
