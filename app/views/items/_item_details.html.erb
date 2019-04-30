@@ -1,4 +1,8 @@
-<h3><%= @item.name %></h3>
+<h3 align = "center"><%= @item.name %></h3>
+
+<p>
+	<%= image_tag('default_image.png', :size => "200x200", class: "img-responsive center-block") %>
+</p>
 
 <p>
   <b>Price</b>: <%= number_to_currency @item.current_price %>

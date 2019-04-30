@@ -8,10 +8,11 @@
         <th width="100">Quantity</th>
         <th width="150">Item</th>
         <th width="200">Address</th>
-        <th width="100">Address 2</th>
+        <th width="100">Line 2</th>
         <th width="100">City</th>
         <th width="100">State</th>
         <th width="100">Zip</th>
+        <th width="100">Shipped?</th>
         <% if controller.controller_name == 'home' %>
           <th>&nbsp;</th>
         <% end %>
@@ -30,9 +31,9 @@
 
             <td>
               <% if oi.shipped_on.nil? %>
-                <%= link_to(oi.quantity, mark_shipped_path(oi.id), method: 'patch') %>
+                <%= link_to(image_tag('red_check.png', :size => "30x30"), mark_shipped_path(oi.id), method: 'patch') %>
               <% else %>
-                <%= link_to(oi.quantity, mark_unshipped_path(oi.id), method: 'patch') %>
+                <%= link_to(image_tag('green_check.png', :size => "30x30"), mark_unshipped_path(oi.id), method: 'patch') %>
               <% end %>
             </td>
         </tr>
