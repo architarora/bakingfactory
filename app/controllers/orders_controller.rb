@@ -26,7 +26,13 @@ class OrdersController < ApplicationController
       @order.pay
       redirect_to @order, notice: "Thank you for ordering from the Baking Factory."
     else
-      render action: 'new'
+      @order.customer = current_user.customer
+      @order.grand_total = @total_cost
+      if @order.save
+      # @order.pay
+      redirect_to @order, notice: "Thank you for ordering from the Baking Factory."
+      # render action: 'new'
+      end
     end
   end
 
