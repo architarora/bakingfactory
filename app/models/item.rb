@@ -9,6 +9,9 @@ class Item < ApplicationRecord
   CATEGORIES = [['Bread','bread'],['Muffins','muffins'],['Pastries','pastries']]
 
   # Relationships
+
+  mount_uploader :photo, PhotoUploader
+  
   has_many :order_items
   has_many :item_prices
   has_many :orders, through: :order_items
