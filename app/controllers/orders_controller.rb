@@ -30,6 +30,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def order_cust
+    @order = Order.new
+  end
+
   def baking_list
     @unshipped_orders = OrderItems.unshipped
   end

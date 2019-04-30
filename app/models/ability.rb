@@ -42,6 +42,7 @@ class Ability
       can :add_to_cart, Order
       can :add_to_cart, Item
 
+      can :order_cust, Order
 
       can :create, Address
 

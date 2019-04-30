@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get 'add_to_cart/:id', to: 'carts#add_to_cart', as: :add_to_cart
   get 'checkout', to: 'carts#checkout', as: :checkout
 
+  get 'order_cust', to: 'orders#order_cust', as: :order_cust
+
   get 'clear_all_cart', to: 'carts#clear_all_cart', as: :clear_all_cart
   patch 'remove_item/:id', to: 'carts#remove_item', as: :remove_item
 
