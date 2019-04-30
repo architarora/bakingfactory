@@ -3,29 +3,42 @@
 <% else %>
   <h4> Cart </h4>
   <table class="table table-striped">
-    <!-- <thead>
+    <thead>
       <tr>
-        <th width="225">Name</th>
-        <th width="125">Phone</th>
-        <th width="200">Email</th>
+        <th width="225">Item</th>
+        <th width="125">Quantity</th>
+        <th width="150">Subtotal</th>
+        <th width="200">Remove</th>
       </tr>
-    </thead> -->
+    </thead>
     <tbody>
       <% @cart_items.each do |orderI| %>
         <tr>
           <td><%= orderI.item_id %></td>
           <td><%= orderI.quantity %></td>
-          <td><%= link_to(remove_item_path(orderI.item_id), class: 'button tiny radius', method: "patch") do %>
-                &nbsp;Remove Item&nbsp;
-                <% end %> 
+          <td><%= number_to_currency orderI.subtotal %></td>
+          <td><%= link_to(image_tag('red_cross.png', :size => "25x25", class: "img-responsive left-block"), remove_item_path(orderI.item_id), method: 'patch') %>
             </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+<br />
+<br />
+
+  <p align="right">Subtotal: <%= number_to_currency @subtotal_cost %></p>
+  <p align="right">Shipping: <%= number_to_currency @shipping_cost %></p>
+  <hr>
+  <p align="right">Total: <%= number_to_currency @total_cost %></p>
+
+  <br />
 
   <%= link_to(clear_all_cart_path, class: 'button tiny radius', method: "get") do %>
                 &nbsp;Clear Cart&nbsp;
               <% end %>
+  <%= link_to(checkout_path, class: 'button tiny radius', method: "get") do %>
+                &nbsp;Checkout&nbsp;
+              <% end %>
+
 <% end %>
 <p>&nbsp;</p>
