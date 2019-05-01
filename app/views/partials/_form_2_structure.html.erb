@@ -18,7 +18,7 @@
         <div class="card grey lighten-3">
           <div class="row">
             <div class="card-content">
-              <%= f.fields_for :customer do |ff| %>
+              <%= f.simple_fields_for :user do |ff| %>
               <span class="card-title"><%= section_2 %></span>
               <div class="form-inputs">
                 <%= render partial: "#{fields2}", locals: { f:ff } %>

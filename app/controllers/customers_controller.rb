@@ -15,6 +15,7 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
+    user = @customer.build_user
   end
 
   def edit
@@ -24,11 +25,15 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    @user = User.new(customer_params[:users_attributes])
-    @user.role = :customer
-    @customer.user_id = @user.id
-    if !@user.save
-      @customer.valid?
+    user = @customer.build_user
+    user_hash = customer_params.to_h
+    # @user = User.new(customer_params[:users_attributes])
+    @customer.user.role = "customer"
+    @customer.user.active = "true"
+    @customer.user.username = user_hash['user_attributes']['username']
+    @customer.user.password = user_hash['user_attributes']['password']
+    @customer.user.password_confirmation = user_hash['user_attributes']['password_confirmation']
+    if @customer.save
       render action: 'new'
     else
       if @customer.save
@@ -54,7 +59,7 @@ class CustomersController < ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :email, :phone, :active, users_attributes: [:username, :password, :password_confirmation, :role])
+    params.require(:customer).permit(:first_name, :last_name, :email, :phone, :active, user_attributes: [:username, :password, :password_confirmation, :role])
   end
 
 end
