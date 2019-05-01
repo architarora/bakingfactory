@@ -24,10 +24,19 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
-    if @customer.save
-      redirect_to @customer, notice: "#{@customer.proper_name} was added to the system."
-    else
+    @user = User.new(customer_params[:users_attributes])
+    @user.role = :customer
+    @customer.user_id = @user.id
+    if !@user.save
+      @customer.valid?
       render action: 'new'
+    else
+      if @customer.save
+        flash[:notice] = "Successfully created customer."
+        redirect_to customer_params(@customer) 
+      else
+        render action: 'new'
+      end 
     end
   end
 
@@ -45,7 +54,7 @@ class CustomersController < ApplicationController
   end
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :email, :phone, :active)
+    params.require(:customer).permit(:first_name, :last_name, :email, :phone, :active, users_attributes: [:username, :password, :password_confirmation, :role])
   end
 
 end

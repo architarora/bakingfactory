@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :items
   resources :carts
   resources :customers
+  resources :users
 
   # Semi-static page routes
   resources :sessions
