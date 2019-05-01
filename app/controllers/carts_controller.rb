@@ -20,7 +20,7 @@ class CartsController < ApplicationController
 
   def add_to_cart
     add_item_to_cart(Item.find(params[:id]).id.to_s)
-    redirect_to items_path, notice: "Item added to cart!"
+    redirect_to items_path, notice: "#{Item.find(params[:id]).name} added to cart!"
   end
 
   def clear_all_cart
@@ -30,7 +30,7 @@ class CartsController < ApplicationController
 
   def remove_item
     remove_item_from_cart(Item.find(params[:id]).id.to_s)
-    redirect_to carts_path, notice: "Removed item from cart!"
+    redirect_to carts_path, notice: "#{Item.find(params[:id]).name} removed from cart!"
   end
 
   def checkout
