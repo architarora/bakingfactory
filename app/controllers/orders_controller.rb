@@ -31,7 +31,6 @@ class OrdersController < ApplicationController
       @order.customer_id = current_user.customer.id
     end
     if @order.save
-      byebug
       @order.grand_total = calculate_cart_items_cost() + calculate_cart_shipping()
       @order.pay
       save_each_item_in_cart(@order)
