@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col s8">
     <%= render partial: "partials/previous_items", locals: {previous_items: @previous_items}  unless @previous_items.empty?%>
+    <%= render partial: "partials/best_sellers", locals: {previous_items: @best_sellers}  unless !@previous_items.empty?%>
   </div>
   <div class="col s4">
     <%= render partial: "partials/previous_orders", locals: {previous_orders: @previous_orders}  unless @previous_orders.empty?%>
