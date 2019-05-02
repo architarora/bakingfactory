@@ -6,7 +6,8 @@
 
   <table class="striped highlight">
     <thead>
-      <th width="300">Name</th>
+      <th >Image</th>
+      <th >Name</th>
       <th>Units Per Item</th>
       <th>Price</th>
       <% if can? :edit, items %>
@@ -15,6 +16,11 @@
     </thead>
     <% for item in items %>
       <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+        <%if !item.photo_url.nil? %>
+        <td><%= image_tag(item.photo, :size => "60x60") %></td>
+        <% else %>
+        <td><%= image_tag("default_image.png", :size => "60x60") %></td>
+        <%end%>
         <td><%= link_to item.name, item_path(item) %></td>
         <td><%= item.units_per_item %> <%= item_type == 'bread' ? 'loaf' : item_type %></td>
         <td><%= number_to_currency item.current_price %></td>
@@ -38,6 +44,9 @@
             <%= link_to(item_path(item), method: :delete, data: { confirm: 'Are you sure you wish to delete this information?' }) do %>
                 <i class="material-icons">delete</i>
             <% end %>
+          <% end %>
+          <% if can? :destroy, item %>
+            <%= link_to(image_tag('minus.png', :size => "30x30"), item_inactive_path(item), method: 'patch') %>
           <% end %>
       </td>
       </tr>

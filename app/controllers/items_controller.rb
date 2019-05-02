@@ -56,6 +56,18 @@
     redirect_to items_url, notice: "#{@item.name} was removed from the system."
   end
 
+  def item_inactive
+    @item = Item.find(params[:id])
+    # @item.active = !@item.active
+    @item.update_attribute(:active, !@item.active)
+
+    if @item.active?
+      redirect_to items_url, notice: "#{@item.name} was made active."
+    else
+      redirect_to items_url, notice: "#{@item.name} was made inactive."
+    end
+  end
+
   private
   def set_item
     @item = Item.find(params[:id])
