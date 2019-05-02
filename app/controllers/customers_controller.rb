@@ -28,11 +28,16 @@ class CustomersController < ApplicationController
     user = @customer.build_user
     user_hash = customer_params.to_h
     # @user = User.new(customer_params[:users_attributes])
-    @customer.user.role = "customer"
+    if current_user.nil?
+      @customer.user.role = "customer"
+      @customer.active = "true"
+    end
+
     @customer.user.active = "true"
     @customer.user.username = user_hash['user_attributes']['username']
     @customer.user.password = user_hash['user_attributes']['password']
     @customer.user.password_confirmation = user_hash['user_attributes']['password_confirmation']
+
     if @customer.save
       render action: 'new'
     else

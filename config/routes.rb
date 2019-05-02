@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'baking_list', to: 'sessions#baking_list', as: :baking_list
 
+  # get 'cust_address', to: 'addresses#cust_address', as: :cust_address
+
   get 'shipping_list', to: 'sessions#shipping_list', as: :shipping_list
 
   get 'login', to: 'sessions#new', as: :login

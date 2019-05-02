@@ -58,6 +58,8 @@ class Ability
 
       can :index, Address
 
+      can :cust_address, Address
+
     elsif user.role? :baker
 
       can :show, Item
