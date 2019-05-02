@@ -39,15 +39,11 @@ class CustomersController < ApplicationController
     @customer.user.password_confirmation = user_hash['user_attributes']['password_confirmation']
 
     if @customer.save
-      render action: 'new'
+        flash[:notice] = "Successfully created account. Please login below."
+        redirect_to login_path
     else
-      if @customer.save
-        flash[:notice] = "Successfully created customer."
-        redirect_to customer_params(@customer) 
-      else
         render action: 'new'
-      end 
-    end
+    end 
   end
 
   def update

@@ -16,7 +16,12 @@ class HomeController < ApplicationController
   	redirect_back(fallback_location: home_path) if params[:query].blank?
     @query = params[:query]
     @customers = Customer.search(@query)
-    @items = Item.search(@query)
+
+    if(current_user.nil? or current_user.role?(:customer))
+    	@items = Item.search(@query).active
+    else
+    	@items = Item.search(@query)
+    end
     @total_hits = @customers.size + @items.size
   end
 

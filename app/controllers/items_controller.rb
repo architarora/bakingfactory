@@ -9,6 +9,10 @@
     @breads = Item.active.for_category('bread').alphabetical.paginate(:page => params[:page]).per_page(10)
     @muffins = Item.active.for_category('muffins').alphabetical.paginate(:page => params[:page]).per_page(10)
     @pastries = Item.active.for_category('pastries').alphabetical.paginate(:page => params[:page]).per_page(10)
+
+    @breads_inactive = Item.inactive.for_category('bread').alphabetical.paginate(:page => params[:page]).per_page(10)
+    @muffins_inactive = Item.inactive.for_category('muffins').alphabetical.paginate(:page => params[:page]).per_page(10)
+    @pastries_inactive = Item.inactive.for_category('pastries').alphabetical.paginate(:page => params[:page]).per_page(10)
     # get a list of any inactive items for sidebar
     @inactive_items = Item.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
     @active_items = Item.active.alphabetical.paginate(:page => params[:page]).per_page(10)

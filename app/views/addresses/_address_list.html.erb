@@ -1,5 +1,7 @@
 <% if addresses.empty? %>
+<% if state == 'active' %>
   <p><em>There are no <%= state %> addresses at this time.</em></p>
+<% end %>
 <% else %>
 <h2><%= state.capitalize %> Addresses</h2>
 <table class="table table-striped">
@@ -27,8 +29,10 @@
           <% end %>
         </td>
         <td>
+          <% if current_user.role?(:admin) %>
           <%= link_to(address_path(address), class: 'button tiny radius warning') do %>
             &nbsp;Delete&nbsp;
+          <% end %>
           <% end %>
         </td>
       </tr>

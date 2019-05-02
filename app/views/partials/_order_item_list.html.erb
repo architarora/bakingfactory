@@ -7,6 +7,7 @@
       <tr>
         <th width="100">Quantity</th>
         <th width="150">Item</th>
+        <th width="150">Recipient</th>
         <th width="200">Address</th>
         <th width="100">Line 2</th>
         <th width="100">City</th>
@@ -26,6 +27,7 @@
         <tr>
           <td align="center"><%= oi.quantity %></td>
           <td><%= link_to oi.item.name, item_path(oi.item) %></td>
+          <td><%= oi.order.address.recipient%></td>
           <td><%= oi.order.address.street_1%></td>
           <td><%= oi.order.address.street_2%></td>
           <td><%= oi.order.address.city%></td>
