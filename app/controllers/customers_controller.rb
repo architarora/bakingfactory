@@ -37,6 +37,7 @@ class CustomersController < ApplicationController
     @customer.user.username = user_hash['user_attributes']['username']
     @customer.user.password = user_hash['user_attributes']['password']
     @customer.user.password_confirmation = user_hash['user_attributes']['password_confirmation']
+    # @customer.user.role = user_hash['user_attributes']['role']
 
     if @customer.save
         flash[:notice] = "Successfully created account. Please login below."

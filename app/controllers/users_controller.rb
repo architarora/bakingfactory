@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def index
     # finding all the active owners and paginating that list (will_paginate)
-    @users = User.all.paginate(page: params[:page]).per_page(15)
+    @active_users = User.employees.paginate(page: params[:page]).per_page(15)
+    @inactive_users = User.employees.paginate(page: params[:page]).per_page(15)
   end
 
   def new
