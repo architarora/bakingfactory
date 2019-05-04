@@ -70,6 +70,10 @@ class Ability
       can :index, Order
       can :baking_list, Order
 
+      can :show, User do |u|  
+        u.id == user.id
+      end
+
     elsif user.role? :shipper
 
       can :show, Item
@@ -79,6 +83,10 @@ class Ability
       can :index, Order
 
       can :show, Address
+
+      can :show, User do |u|  
+        u.id == user.id
+      end
       
     else
       can :show, Item
