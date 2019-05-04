@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :check_login
+  # before_action :check_login
   authorize_resource
   
   def index
@@ -51,7 +51,7 @@ class CustomersController < ApplicationController
     if @customer.update(customer_params)
       redirect_to @customer, notice: "#{@customer.proper_name} was revised in the system."
     else
-      render action: 'edit'
+      render action: 'edit', notice: "Please fix errors below."
     end
   end
 

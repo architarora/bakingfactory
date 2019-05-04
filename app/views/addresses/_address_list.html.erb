@@ -24,13 +24,13 @@
         </td>
         <td align="center"><%= address.is_billing ? "Yes" : "No" %></td>      
         <td>
-          <%= link_to(edit_address_path(address), class: 'button tiny radius warning') do %>
+          <%= link_to(edit_address_path(address), class: 'waves-effect waves-light btn') do %>
             &nbsp;Edit&nbsp;
           <% end %>
         </td>
         <td>
           <% if current_user.role?(:admin) %>
-          <%= link_to(address_path(address), class: 'button tiny radius warning') do %>
+          <%= link_to(address_path(address), class: 'waves-effect waves-light btn') do %>
             &nbsp;Delete&nbsp;
           <% end %>
           <% end %>
