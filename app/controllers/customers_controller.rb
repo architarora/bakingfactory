@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  # before_action :check_login
+  before_action :check_login
   authorize_resource
   
   def index
@@ -53,6 +53,19 @@ class CustomersController < ApplicationController
     else
       render action: 'edit'
     end
+  end
+
+   def admin_dashboard
+    @all_orders = Order.all
+    @all_items = Item.all
+    @all_customers = Customer.all
+    @all_oi = OrderItem.all
+  end
+
+  def cust_dashboard
+    @previous_orders = current_user.customer.orders
+    @previous_items = current_user.customer.orders.map {|a| a.order_items.map {|l| l.item}}.last(10)
+    @best_sellers = Item.all.last(5)
   end
 
   private

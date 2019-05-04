@@ -15,8 +15,9 @@ Rails.application.routes.draw do
   get 'contact' => 'home#contact', as: :contact
   get 'privacy' => 'home#privacy', as: :privacy
   get 'home/search', to: 'home#search', as: :search
-  get 'home/admin_dashboard', to: 'home#admin_dashboard', as: :admin_dashboard
-  get 'home/cust_dashboard', to: 'home#cust_dashboard', as: :customers_dashboard
+  
+  get 'admin_dashboard', to: 'customers#admin_dashboard', as: :admin_dashboard
+  get 'cust_dashboard', to: 'customers#cust_dashboard', as: :customers_dashboard
 
   post 'customers/new', to: 'customers#new', as: :user_signup
 

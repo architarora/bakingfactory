@@ -60,6 +60,8 @@ class Ability
 
       can :cust_address, Address
 
+      can :cust_dashboard, Customer
+
     elsif user.role? :baker
 
       can :show, Item
