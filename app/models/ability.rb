@@ -9,6 +9,9 @@ class Ability
     if user.role? :admin
       # they get to do it all
       can :manage, :all
+
+      can :new, ItemPrice
+      can :create, ItemPrice
       
     elsif user.role? :customer
 

@@ -32,11 +32,11 @@
             <% end %>
             &nbsp;&nbsp;&nbsp;&nbsp; 
           <% elsif can? :add_to_cart, item %>
-           <%= link_to(add_to_cart_path(item.id), class:"waves-effect waves-light btn", method: "get") do %>
+           <%= link_to(add_to_cart_path(item.id), class: "waves-effect waves-light btn", method: "get") do %>
                 &nbsp;Add to Cart&nbsp;
             <% end %>
           <% else %>
-          <%= link_to(login_path, class: 'button tiny radius', method: "get") do %>
+          <%= link_to(login_path, class: 'waves-effect waves-light btn', method: "get") do %>
                 &nbsp;Add to Cart&nbsp;
             <% end %>
           <% end %>

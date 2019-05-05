@@ -43,6 +43,9 @@ Rails.application.routes.draw do
   patch 'mark_unshipped/:id', to: 'order_items#mark_unshipped', as: :mark_unshipped
   patch 'mark_shipped/:id', to: 'order_items#mark_shipped', as: :mark_shipped
 
+  get 'item_price_admin/:id', to: 'item_prices#item_price_admin', as: :item_price_admin
+  post 'item_prices', to: 'item_prices#create', as: :item_prices
+
   # Set the root url
   root :to => 'home#home'
   
