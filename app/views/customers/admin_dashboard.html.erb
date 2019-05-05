@@ -60,3 +60,11 @@
     }]
 });
 </script> -->
+
+<%= javascript_include_tag 'application' %>
+<head>
+<%= bar_chart OrderItem.group(:item).count %>
+<%= scatter_chart @all_items.map{|a| 
+	{name: a.name, data: a.order_items.group(:price)}} %>
+</head>
+
