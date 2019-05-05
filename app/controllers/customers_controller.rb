@@ -60,6 +60,7 @@ class CustomersController < ApplicationController
     @all_items = Item.all
     @all_customers = Customer.all
     @all_oi = OrderItem.all
+    @sample_data = [1,2,3,4,5].to_a
   end
 
   def cust_dashboard
