@@ -25,6 +25,7 @@ class User < ApplicationRecord
 
   # For use in authorizing with CanCan
   ROLES = [['Administrator', :admin],['Baker', :baker],['Shipper', :shipper],['Customer',:customer]]
+  ROLES_NEW = [['Baker', :baker],['Shipper', :shipper]]
 
   def role?(authorized_role)
     return false if role.nil?

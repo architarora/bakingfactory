@@ -1,4 +1,4 @@
 <%= f.input :username, label_html: { class: 'active' } %>
 <%= f.input :password, label_html: { class: 'active' } %>
 <%= f.input :password_confirmation, label_html: { class: 'active' } %>
-<%= f.input :role, collection: User::ROLES, include_blank: true %>
+<%= f.input :role, collection: User::ROLES_NEW, include_blank: true %>
