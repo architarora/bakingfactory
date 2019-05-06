@@ -66,6 +66,9 @@ class CustomersController < ApplicationController
     @most_pop_items = OrderItem.all.group_by{|a| a.item}.map{|a,b| [b.size, a.name]}.sort.reverse.first(5)
 
     @total_revenue = Order.all.map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
+    @total_revenue_month = Order.all.where("date > ?", 1.month.ago).map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
+    @total_revenue_quarter = Order.all.where("date > ?", 4.months.ago).map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
+    @total_revenue_year = Order.all.where("date > ?", 1.year.ago).map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
     @num_active_customers = Customer.active.to_a.count
     @num_inactive_customers = Customer.inactive.to_a.count
     @top_customers = Order.all.group_by{|a| a.customer}.map{|customer,rest| customer.proper_name}.last(5)
@@ -74,8 +77,7 @@ class CustomersController < ApplicationController
     @avg_order = @t_c.inject{ |sum, el| sum + el }.to_f / @t_c.size
     @avg_items = OrderItem.all.to_a.size / Order.all.to_a.size
     
-    # @temp = Item.where(id: @item_o.map(&:id))
-    @sample_data = [1,2,3,4,5].to_a
+    @tester = Order.all.where("date < ?", 2.weeks.ago).map{|a| a.grand_total}
   end
 
   def cust_dashboard

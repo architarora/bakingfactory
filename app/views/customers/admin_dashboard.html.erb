@@ -1,129 +1,107 @@
-<!-- <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#test1">Items</a></li>
+        <li class="tab col s3"><a href="#test2">Sales</a></li>
+        <li class="tab col s3"><a href="#test3">Customers</a></li>
+      </ul>
+    </div>
+    <div id="test1" class="col s12">
+    
+		<%= javascript_include_tag 'application' %>
+		<head>
+			<h3> Dashboard </h3>
+			<br\>
+			<h5> Items </h5>
+		<%= pie_chart Item.group(:category).count %>
+		<p>
+			Most Popular Items: 
+		</p>
+		<p>
+			<p>
+			<% @most_pop_items.each do |a| %>
+			Item: <%= a[1] %>, 
+			Quantity: <%= a[0] %>
+			</p>
+			<% end %>
+		</p>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		</head>
+		<br \>
+		<br \>
+	</div>
+    <div id="test2" class="col s12">
+		    
 
-<script> 
-	Highcharts.chart('container', {
+		<h5> Sales </h5>
+		<p>
+			Total Revenue: <%= number_to_currency @total_revenue %>
+		</p>
 
-    chart: {
-        type: 'column'
-    },
+		<p>
+			Total Revenue Last Month: <%= number_to_currency @total_revenue_month %>
+		</p>
 
-    title: {
-        text: 'Total fruit consumtion, grouped by gender'
-    },
+		<p>
+			Total Revenue Last Quarter: <%= number_to_currency @total_revenue_quarter %>
+		</p>
 
-    xAxis: {
-        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-    },
+		<p>
+			Total Revenue Last Year: <%= number_to_currency @total_revenue_year %>
+		</p>
 
-    yAxis: {
-        allowDecimals: false,
-        min: 0,
-        title: {
-            text: 'Number of fruits'
-        }
-    },
+		<p>
+		Highest Paid Orders:
+		<% @new_tc.each do |a| %>
+			 <%= number_to_currency a %>; 
+		<%end%>
+		</p>
 
-    tooltip: {
-        formatter: function () {
-            return '<b>' + this.x + '</b><br/>' +
-                this.series.name + ': ' + this.y + '<br/>' +
-                'Total: ' + this.point.stackTotal;
-        }
-    },
-
-    plotOptions: {
-        column: {
-            stacking: 'normal'
-        }
-    },
-
-    series: [{
-        name: 'John',
-        data: [5, 3, 4, 7, 2],
-        stack: 'male'
-    }, {
-        name: 'Joe',
-        data: [3, 4, 4, 2, 5],
-        stack: 'male'
-    }, {
-        name: 'Jane',
-        data: [2, 5, 6, 2, 1],
-        stack: 'female'
-    }, {
-        name: 'Janet',
-        data: [3, 0, 4, 4, 3],
-        stack: 'female'
-    }]
-});
-</script> -->
-
-<%= javascript_include_tag 'application' %>
-<head>
-	<h3> Dashboard </h3>
-	<br\>
-	<h5> Items </h5>
-<%= pie_chart Item.group(:category).count %>
-<p>
-	Most Popular Items: 
-</p>
-<p>
-	<p>
-	<% @most_pop_items.each do |a| %>
-	Item: <%= a[1] %>, 
-	Quantity: <%= a[0] %>
-	</p>
-	<% end %>
-</p>
-
-</head>
-
-<h5> Sales </h5>
-<p>
-	Total Revenue: <%= number_to_currency @total_revenue %>
-</p>
-
-<p>
-Highest Paid Orders:
-<% @new_tc.each do |a| %>
-	 <%= number_to_currency a %>; 
-<%end%>
-</p>
-
-<p>
-	Average Customer Has Spent: <%=number_to_currency @avg_order %>
-</p>
-<br\>
+		<p>
+			Average Customer Has Spent: <%=number_to_currency @avg_order %>
+		</p>
+		<br\>
 
 
-<p>
-	Average Items per Order: <%= @avg_items %> items
-</p>
-<br\>
+		<p>
+			Average Items per Order: <%= @avg_items %> items
+		</p>
+		<br\>
+
+		<br \>
+		<br \>
+	</div>
+	<div id="test3" class="col s12">
+
+		<h5> Customers </h5>
+		<p>
+			Active Customers: <%= @num_active_customers %>
+		</p>
+		<br\>
+
+		<p>
+			Inactive Customers: <%= @num_inactive_customers %>
+		</p>
+		<br\>
+
+		<p>
+			Returning Customers: <%= @returning_customers %>
+		</p>
+		</br\>
 
 
-<h5> Customers </h5>
-<p>
-	Active Customers: <%= @num_active_customers %>
-</p>
-<br\>
+		<p>
+			Active Returning Customers: <%= @returning_customers_active %>
+		</p>
+		</br\>
 
-<p>
-	Inactive Customers: <%= @num_inactive_customers %>
-</p>
-<br\>
+		<p>
+			Non-Returning Customers: <%= @num_active_customers + @num_inactive_customers - @returning_customers_active %>
+		</p>
+		</br\>
 
-<p>
-	Returning Customers: <%= @returning_customers %>
-</p>
-</br\>
+	</div>
+ </div>
 
 
-<p>
-	Active Returning Customers: <%= @returning_customers_active %>
-</p>
-</br\>
 
