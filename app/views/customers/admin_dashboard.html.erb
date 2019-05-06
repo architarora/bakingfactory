@@ -63,8 +63,55 @@
 
 <%= javascript_include_tag 'application' %>
 <head>
-<%= bar_chart OrderItem.group(:item).count %>
-<%= scatter_chart @all_items.map{|a| 
-	{name: a.name, data: a.order_items.group(:price)}} %>
+	<h3> Dashboard </h3>
+	<br\>
+	<h5> Items </h5>
+<%= bar_chart OrderItem.shipped.group(:item).count %>
 </head>
+
+<h5> Sales </h5>
+<p>
+	Total Revenue: <%= number_to_currency @total_revenue %>
+</p>
+
+<p>
+Highest Paid Orders:
+<% @new_tc.each do |a| %>
+	 <%= number_to_currency a %>; 
+<%end%>
+</p>
+
+<p>
+	Average Customer Has Spent: <%=number_to_currency @avg_order %>
+</p>
+<br\>
+
+
+<p>
+	Average Items per Order: <%= @avg_items %> items
+</p>
+<br\>
+
+
+<h5> Customers </h5>
+<p>
+	Active Customers: <%= @num_active_customers %>
+</p>
+<br\>
+
+<p>
+	Inactive Customers: <%= @num_inactive_customers %>
+</p>
+<br\>
+
+<p>
+	Returning Customers: <%= @returning_customers %>
+</p>
+</br\>
+
+
+<p>
+	Active Returning Time Customers: <%= @returning_customers_active %>
+</p>
+</br\>
 

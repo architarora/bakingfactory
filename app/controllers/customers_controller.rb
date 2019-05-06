@@ -56,10 +56,23 @@ class CustomersController < ApplicationController
   end
 
    def admin_dashboard
+    @returning_customers = Customer.all.select{|a| a.orders.size >1}.to_a.size
+    @returning_customers_active = Customer.active.select{|a| a.orders.size >1}.to_a.size
     @all_orders = Order.all
     @all_items = Item.all
     @all_customers = Customer.all
     @all_oi = OrderItem.all
+    @item_o = OrderItem.all.map{|a| Item.where(id: a.item)}
+    @total_revenue = Order.all.map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
+    @num_active_customers = Customer.active.to_a.count
+    @num_inactive_customers = Customer.inactive.to_a.count
+    @top_customers = Order.all.group_by{|a| a.customer}.map{|customer,rest| customer.proper_name}.last(5)
+    @t_c = Customer.all.map{|a| a.orders.map{|m| m.grand_total}.inject(0){|sum,x| sum + x }}
+    @new_tc = @t_c.sort.reverse.first(10)
+    @avg_order = @t_c.inject{ |sum, el| sum + el }.to_f / @t_c.size
+    @avg_items = OrderItem.all.to_a.size / Order.all.to_a.size
+    
+    # @temp = Item.where(id: @item_o.map(&:id))
     @sample_data = [1,2,3,4,5].to_a
   end
 

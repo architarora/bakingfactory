@@ -74,6 +74,7 @@ class Ability
         u.id == user.id
       end
 
+
     elsif user.role? :shipper
 
       can :show, Item
@@ -87,6 +88,9 @@ class Ability
       can :show, User do |u|  
         u.id == user.id
       end
+
+      can :mark_unshipped, OrderItem
+      can :mark_shipped, OrderItem
       
     else
       can :show, Item
