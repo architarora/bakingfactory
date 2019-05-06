@@ -21,7 +21,7 @@
 </p>
 
 <% if !can? :edit, @item %>
-<%= link_to(add_to_cart_path(@item.id), class: 'button tiny radius', method: "get") do %>
+<%= link_to(add_to_cart_path(@item.id), class: 'waves-effect waves-light btn', method: "get") do %>
                 &nbsp;Add to Cart&nbsp;
  <% end %>
   <% end %>
