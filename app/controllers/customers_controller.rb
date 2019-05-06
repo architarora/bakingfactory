@@ -65,6 +65,10 @@ class CustomersController < ApplicationController
     @item_o = OrderItem.all.map{|a| Item.where(id: a.item)}
     @most_pop_items = OrderItem.all.group_by{|a| a.item}.map{|a,b| [b.size, a.name]}.sort.reverse.first(5)
 
+    @item_date1 = OrderItem.all.select{|m| m.order.date > 1.month.ago}.group_by{|a| a.item}.map{|a,b| [b.size, a.name]}.sort.reverse.first(1)
+    @item_date2 = OrderItem.all.select{|m| m.order.date > 4.month.ago}.group_by{|a| a.item}.map{|a,b| [b.size, a.name]}.sort.reverse.first(1)
+    @item_date3 = OrderItem.all.select{|m| m.order.date > 1.year.ago}.group_by{|a| a.item}.map{|a,b| [b.size, a.name]}.sort.reverse.first(1)
+
     @total_revenue = Order.all.map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
     @total_revenue_month = Order.all.where("date > ?", 1.month.ago).map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
     @total_revenue_quarter = Order.all.where("date > ?", 4.months.ago).map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
@@ -76,8 +80,6 @@ class CustomersController < ApplicationController
     @new_tc = @t_c.sort.reverse.first(10)
     @avg_order = @t_c.inject{ |sum, el| sum + el }.to_f / @t_c.size
     @avg_items = OrderItem.all.to_a.size / Order.all.to_a.size
-    
-    @tester = Order.all.where("date < ?", 2.weeks.ago).map{|a| a.grand_total}
   end
 
   def cust_dashboard
