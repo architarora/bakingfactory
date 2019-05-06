@@ -1,7 +1,7 @@
 class OrderItemsController < ApplicationController
   before_action :set_order_item, only: [:show, :destroy]
-  # before_action :check_login
-  # authorize_resource
+  before_action :check_login
+  authorize_resource
   
    def mark_shipped
     @current_oi = OrderItem.find(params[:id])
