@@ -73,6 +73,11 @@ class CustomersController < ApplicationController
     @total_revenue_month = Order.all.where("date > ?", 1.month.ago).map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
     @total_revenue_quarter = Order.all.where("date > ?", 4.months.ago).map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
     @total_revenue_year = Order.all.where("date > ?", 1.year.ago).map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
+
+    @orders_month = Order.all.where("date > ?", 1.month.ago).to_a.size
+    @orders_quarter = Order.all.where("date > ?", 4.month.ago).to_a.size
+    @orders_year = Order.all.where("date > ?", 1.year.ago).to_a.size
+
     @num_active_customers = Customer.active.to_a.count
     @num_inactive_customers = Customer.inactive.to_a.count
     @top_customers = Order.all.group_by{|a| a.customer}.map{|customer,rest| customer.proper_name}.last(5)
