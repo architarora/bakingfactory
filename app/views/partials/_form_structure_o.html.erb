@@ -15,6 +15,13 @@
       <div class="row">
         <div class="form-actions col s9">
           <%= f.button :submit %>
+          <%= link_to(new_address_path, class: "waves-effect waves-light btn") do %>
+            <!-- <i class="fa fa-plus"></i> -->
+            &nbsp;New Address
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 <%= link_to 'Back', :back %>

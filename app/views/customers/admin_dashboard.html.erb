@@ -66,7 +66,7 @@
 	<h3> Dashboard </h3>
 	<br\>
 	<h5> Items </h5>
-<%= bar_chart OrderItem.shipped.group(:item).count %>
+<%= pie_chart Item.group(:category).count %>
 <p>
 	Most Popular Items: 
 </p>
@@ -123,7 +123,7 @@ Highest Paid Orders:
 
 
 <p>
-	Active Returning Time Customers: <%= @returning_customers_active %>
+	Active Returning Customers: <%= @returning_customers_active %>
 </p>
 </br\>
 
