@@ -67,6 +67,18 @@
 	<br\>
 	<h5> Items </h5>
 <%= bar_chart OrderItem.shipped.group(:item).count %>
+<p>
+	Most Popular Items: 
+</p>
+<p>
+	<p>
+	<% @most_pop_items.each do |a| %>
+	Item: <%= a[1] %>, 
+	Quantity: <%= a[0] %>
+	</p>
+	<% end %>
+</p>
+
 </head>
 
 <h5> Sales </h5>

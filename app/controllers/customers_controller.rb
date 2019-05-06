@@ -63,6 +63,8 @@ class CustomersController < ApplicationController
     @all_customers = Customer.all
     @all_oi = OrderItem.all
     @item_o = OrderItem.all.map{|a| Item.where(id: a.item)}
+    @most_pop_items = OrderItem.all.group_by{|a| a.item}.map{|a,b| [b.size, a.name]}.sort.reverse.first(5)
+
     @total_revenue = Order.all.map{|a| a.grand_total}.inject(0){|sum,x| sum + x }
     @num_active_customers = Customer.active.to_a.count
     @num_inactive_customers = Customer.inactive.to_a.count
