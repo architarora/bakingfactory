@@ -14,7 +14,7 @@
     <tbody>
       <% @cart_items.each do |orderI| %>
         <tr>
-          <td><%= Item.find(orderI.item_id).name %></td>
+          <td><%= orderI.item.name %></td>
           <td><%= orderI.quantity %></td>
           <td><%= number_to_currency orderI.subtotal %></td>
           <td><%= link_to(image_tag('red_cross.png', :size => "25x25", class: "img-responsive left-block"), remove_item_path(orderI.item_id), method: 'patch') %>

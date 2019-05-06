@@ -80,7 +80,7 @@ class CustomersController < ApplicationController
 
   def cust_dashboard
     @previous_orders = current_user.customer.orders
-    @previous_items = current_user.customer.orders.map {|a| a.order_items.map {|l| l.item}}.last(10)
+    @previous_items = current_user.customer.orders.map {|a| a.order_items.map {|l| l.item}}.last(5)
     @best_sellers = Item.all.last(5)
   end
 

@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
   # Scopes
   scope :alphabetical,  -> { order(:last_name).order(:first_name) }
   # search for all the owners in the system by either first or last name
-  scope :search, ->(term) { where('first_name LIKE ? OR last_name LIKE ?', "#{term}%", "#{term}%") }
+  scope :search, ->(term) { where('first_name LIKE ? OR last_name LIKE ?', "%#{term}%", "%#{term}%") }
 
   # Validations
   validates_presence_of :last_name, :first_name
