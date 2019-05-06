@@ -23,6 +23,16 @@
 <% if !can? :edit, @item %>
 <%= link_to(add_to_cart_path(@item.id), class: 'waves-effect waves-light btn', method: "get") do %>
                 &nbsp;Add to Cart&nbsp;
+     <%end%>
  <% end %>
+
+ <% if can? :edit, @item && @item.active?%>
+<%= link_to(item_inactive_path(@item.id), class: 'waves-effect waves-light btn', method: "patch") do %>
+                &nbsp;Make Active&nbsp;
+                <%end%>
+ <%elsif can? :edit, @item && !@item.active? %>
+ <%= link_to(item_inactive_path(@item.id), class: 'waves-effect waves-light btn', method: "patch") do %>
+                &nbsp;Make Inactive&nbsp;
+                <%end%>
   <% end %>
 

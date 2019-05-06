@@ -1,4 +1,4 @@
-<% unless @previous_prices.empty? %>
+<% if !@previous_prices.empty? %>
   <div class="panel clearfix">
     <h3>Price History</h3>
     <table>
@@ -17,6 +17,14 @@
       <% end %>
     </table>
 
+    <%= link_to(item_price_admin_path(item_id: @item.id), class: 'waves-effect waves-light btn') do %>
+                &nbsp;Add Price&nbsp;
+            <% end %>
+  </div>
+<% else %>
+
+<div class="panel clearfix">
+    <h3>Price History</h3>
     <%= link_to(item_price_admin_path(item_id: @item.id), class: 'waves-effect waves-light btn') do %>
                 &nbsp;Add Price&nbsp;
             <% end %>
